@@ -1,0 +1,24 @@
+name: test-env
+services:
+  nginx:
+    container_name: nginx-proxy
+    image: nginxproxy/nginx-proxy:1.6-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  test-env-1:
+    container_name: test-env-1
+    image: dind-poc
+    privileged: true
+    environment:
+      - VIRTUAL_HOST=test-env-1.local
+
+  test-env-2:
+    container_name: test-env-2
+    image: dind-poc
+    privileged: true
+    environment:
+      - VIRTUAL_HOST=test-env-2.local
+

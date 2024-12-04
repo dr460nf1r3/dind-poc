@@ -1,0 +1,7 @@
+name: test-env
+services:
+  nginx:
+    container_name: nginx
+    image: docker.io/nginx:alpine
+    ports:
+      - "80:80"
